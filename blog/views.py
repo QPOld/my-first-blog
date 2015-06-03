@@ -19,9 +19,7 @@ def post_new(request):
     if request.method=="POST":
         form = PostForm(request.POST)
         if form.is_valid():
-            post = form.save(commit=False)
-            u = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
-            
+            post = form.save(commit=False)            
             post.author = "Anonymous"
             post.save()
             post.publish()
