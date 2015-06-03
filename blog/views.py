@@ -19,10 +19,11 @@ def post_new(request):
     if request.method=="POST":
         form = PostForm(request.POST)
         if form.is_valid():
-            post = form.save(commit=False)            
-            post.author = "Anonymous"
-            post.save()
-            post.publish()
+            post = form.save()
+            # post = form.save(commit=False)
+            # post.author = "Anonymous"
+            # post.save()
+            # post.publish()
             return redirect('blog.views.post_detail',pk=post.pk)
     else:
         form = PostForm()
