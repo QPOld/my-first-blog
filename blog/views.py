@@ -4,6 +4,7 @@ from django.utils import timezone
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import AnonymousUser
 
 # Create your views here.
 
@@ -20,10 +21,9 @@ def post_new(request):
         form = PostForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
-            # post = form.save(commit=False)
-            post.author = request.user
+            post.author = AnonymousUser()
             post.save()
-            # post.publish()
+            post.publish()
             return redirect('blog.views.post_detail',pk=post.pk)
     else:
         form = PostForm()
