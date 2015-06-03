@@ -20,7 +20,9 @@ def post_new(request):
         form = PostForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
-            post.author = request.user
+            u = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+            
+            post.author = "Anonymous"
             post.save()
             post.publish()
             return redirect('blog.views.post_detail',pk=post.pk)
