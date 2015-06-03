@@ -53,5 +53,14 @@ body {
 .news {
 	float: right;
 	padding: 20px 20px 20px 20px;
+	position: absolute;
+	top: 200px;
+	left: 1000px;
 	
+}
+
+.plus {
+    position: absolute;
+       left: 1100px;
+       top: 100px;
 }
