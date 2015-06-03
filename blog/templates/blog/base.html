@@ -1,7 +1,7 @@
 {% load staticfiles %}
 <html>
 	<head>
-		<title>PizzaManPhysicist's Forum</title>
+		<title>PMP Forum</title>
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 		<link rel="stylesheet" href="{% static 'css/blog.css' %}">
@@ -9,7 +9,8 @@
 	<body>
 		<div class="page-header">
 			<a href="{% url 'blog.views.post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-			<h1><a href="/">PizzaManPhysicist's Forum</a></h1>
+			<p align=right style="color:#FFFFFF;padding: 45 0px">Add New Post</p>
+			<h1><a href="/">PMP Forum</a></h1>
 			<h2><p>Express Ideas.</p></h2>
         </div>
 		<div class="content container">
