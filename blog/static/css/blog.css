@@ -49,3 +49,7 @@ body {
 .comment {
     margin: 20px 20px 20px 20px;
 }
+
+.rules {
+	float: right;
+}
