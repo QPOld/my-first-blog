@@ -20,7 +20,7 @@ def post_new(request):
         form = PostForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
-            post.author = None
+            post.author = request.user
             post.save()
             post.publish()
             return redirect('blog.views.post_detail',pk=post.pk)
