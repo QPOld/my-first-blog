@@ -38,6 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
+    'fluent_contents',
+    'fluent_contents.plugins.iframe',
 )
 
 MIDDLEWARE_CLASSES = (
