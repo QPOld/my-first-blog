@@ -14,20 +14,20 @@
         <h1>{{ post.title }}</h1>
 		{% for x in post.text.split %}
 			{% if '.jpg' in x %}
-				<img src={{x}} height="320" width="240">
+				<img src={{x}} height="240" width="320">
 			{% elif '.jpeg' in x %}
-				<img src={{x}} height="320" width="240">
+				<img src={{x}} height="240" width="320">
 			{% elif '.png' in x %}
-				<img src={{x}} height="320" width="240">
-			{% elif '.bmp' in x %}
-				<img src={{x}} height="320" width="240">
+				<img src={{x}} height="240" width="320">
 			{% elif '.gif' in x %}
 				{% if '.gif' in x|slice:"-1" %}
-					<iframe class="imgur-embed" width="100%" height="325" frameborder="1" src={{x}}> 
+					<iframe width="100%" height="320" frameborder="1" src={{x}}> 
 					</iframe>
 				{% else %}
-					<img src={{x}} height="320" width="240">
+					<img src={{x}} height="240" width="320">
 				{% endif %}
+			{% elif '.youtube' in x %}
+				<iframe width="640" height="480" src={{x|slice:':24'}}embed/{{x|slice:"32:"}} frameborder="1" allowfullscreen></iframe>
 			{% else %}
 				 {{x|urlize}}
 			{% endif %}
@@ -38,22 +38,22 @@
 	<a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
 	{% for comment in post.comments.all %}
 	    <div class="comment">
-			{% for x in comment.text.split %}
+			{% for x in post.text.split %}
 				{% if '.jpg' in x %}
-					<img src={{x}} height="320" width="240">
+					<img src={{x}} height="240" width="320">
 				{% elif '.jpeg' in x %}
-					<img src={{x}} height="320" width="240">
+					<img src={{x}} height="240" width="320">
 				{% elif '.png' in x %}
-					<img src={{x}} height="320" width="240">
-				{% elif '.bmp' in x %}
-					<img src={{x}} height="320" width="240">
+					<img src={{x}} height="240" width="320">
 				{% elif '.gif' in x %}
 					{% if '.gif' in x|slice:"-1" %}
-						<iframe class="imgur-embed" width="100%" height="325" frameborder="1" src={{x}}> 
+						<iframe width="100%" height="320" frameborder="1" src={{x}}> 
 						</iframe>
 					{% else %}
-						<img src={{x}} height="320" width="240">
+						<img src={{x}} height="240" width="320">
 					{% endif %}
+				{% elif '.youtube' in x %}
+					<iframe width="640" height="480" src={{x|slice:':24'}}embed/{{x|slice:"32:"}} frameborder="1" allowfullscreen></iframe>
 				{% else %}
 					 {{x|urlize}}
 				{% endif %}
