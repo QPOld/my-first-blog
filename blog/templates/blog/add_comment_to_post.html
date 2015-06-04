@@ -23,6 +23,8 @@
 				<img src=http://i.imgur.com/{{x|slice:"-7:"}}.jpg height="240" width="320">
 			{% elif '.youtube' in x %}
 				<iframe width="640" height="480" src={{x|slice:':24'}}embed/{{x|slice:"32:"}} frameborder="1" allowfullscreen></iframe>
+			{% elif 'soundcloud.' in x %}
+				<iframe width="100%" height="240" src={{x|SCURL|slice:"71:216"}} ></iframe>
 			{% else %}
 				 {{x|urlize}}
 			{% endif %}
