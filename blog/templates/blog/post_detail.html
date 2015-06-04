@@ -26,6 +26,8 @@
 				{% else %}
 					<img src={{x}} height="240" width="320">
 				{% endif %}
+			{% elif 'imgur.' in x %}
+				<img src=http://i.imgur.com/{{x|slice:"-7:"}}.jpg height="240" width="320">
 			{% elif '.youtube' in x %}
 				<iframe width="640" height="480" src={{x|slice:':24'}}embed/{{x|slice:"32:"}} frameborder="1" allowfullscreen></iframe>
 			{% else %}
@@ -52,6 +54,8 @@
 					{% else %}
 						<img src={{x}} height="240" width="320">
 					{% endif %}
+				{% elif 'imgur.' in x %}
+					<img src=http://i.imgur.com/{{x|slice:"-7:"}}.jpg height="240" width="320">
 				{% elif '.youtube' in x %}
 					<iframe width="640" height="480" src={{x|slice:':24'}}embed/{{x|slice:"32:"}} frameborder="1" allowfullscreen></iframe>
 				{% else %}
