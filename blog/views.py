@@ -5,6 +5,7 @@ from .models import Post, Comment
 from .forms import PostForm, CommentForm
 from django.contrib.auth.decorators import login_required
 
+from random import randint
 # Create your views here.
 
 def post_list(request):
@@ -21,6 +22,7 @@ def post_new(request):
         if form.is_valid():
             post = form.save(commit=False)
             post.author = User.objects.get(username="Quinn")
+            post.post_id = randint(10**(11),10**(12) - 1)
             post.save()
             post.publish()
             return redirect('blog.views.post_detail',pk=post.pk)
@@ -55,6 +57,7 @@ def add_comment_to_post(request, pk):
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
+            comment.comment_id = randint(10**(11),10**(12) - 1)
             comment.post = post
             comment.save()
             return redirect('blog.views.post_detail', pk=post.pk)

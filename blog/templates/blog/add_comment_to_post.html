@@ -3,7 +3,30 @@
 {% block content %}
 	<div>
         <h1>{{ post.title }}</h1>
-        <p>{{ post.text|linebreaks }}</p>
+		ID: {{post.post_id}}
+		<br />
+		{% for x in post.text.split %}
+			{% if '.jpg' in x %}
+				<img src={{x}} height="240" width="320">
+			{% elif '.jpeg' in x %}
+				<img src={{x}} height="240" width="320">
+			{% elif '.png' in x %}
+				<img src={{x}} height="240" width="320">
+			{% elif '.gif' in x %}
+				{% if '.gif' in x|slice:"-1" %}
+					<iframe width="100%" height="320" frameborder="1" src={{x}}> 
+					</iframe>
+				{% else %}
+					<img src={{x}} height="240" width="320">
+				{% endif %}
+			{% elif 'imgur.' in x %}
+				<img src=http://i.imgur.com/{{x|slice:"-7:"}}.jpg height="240" width="320">
+			{% elif '.youtube' in x %}
+				<iframe width="640" height="480" src={{x|slice:':24'}}embed/{{x|slice:"32:"}} frameborder="1" allowfullscreen></iframe>
+			{% else %}
+				 {{x|urlize}}
+			{% endif %}
+		{% endfor%}
 	</div>
 	<div>
 	    <h2>New Comment</h2>

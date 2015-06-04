@@ -1,9 +1,12 @@
 {% extends 'blog/base.html'%}
 
 {% block content %}
+{% load app_filters%}
     <div class="post">
         {% if post.published_date %}
             <div class="date">
+				ID: {{post.post_id}}
+				<br />
                 {{ post.published_date }}
             </div>
         {% endif %}
@@ -34,13 +37,12 @@
 				 {{x|urlize}}
 			{% endif %}
 		{% endfor%}
-		
     </div>
 	<hr>
 	<a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
 	{% for comment in post.comments.all %}
 	    <div class="comment">
-			{% for x in post.text.split %}
+			{% for x in comment.text.split %}
 				{% if '.jpg' in x %}
 					<img src={{x}} height="240" width="320">
 				{% elif '.jpeg' in x %}
@@ -64,6 +66,8 @@
 			{% endfor%}
 			{% if user.is_authenticated %}
 	        <div class="date">
+				ID: {{comment.comment_id}}
+				<br />
 	            {{ comment.created_date }}
 	                <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
 	        </div>

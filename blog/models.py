@@ -9,6 +9,7 @@ class Post(models.Model):
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True,null=True)
+    post_id = models.IntegerField(default=0)
     def publish(self):
         self.published_date = timezone.now()
         self.save()
@@ -21,6 +22,7 @@ class Comment(models.Model):
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     approved = models.BooleanField(default=False)
+    comment_id = models.IntegerField(default=0)
 
     def approve(self):
         self.approved = True
